@@ -6,4 +6,8 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ProductOperation.Repository\ProductOperation.Repository.csproj" />
+  </ItemGroup>
+
 </Project>

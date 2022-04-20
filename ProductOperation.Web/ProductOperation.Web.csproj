@@ -6,4 +6,8 @@
     <ImplicitUsings>disable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ProductOperation.Service\ProductOperation.Service.csproj" />
+  </ItemGroup>
+
 </Project>
