@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProductOperation.Core.Models
+namespace ProductOperation.Core.DTOs
 {
-    public class StandartStopping:BaseEntity
+    public class StandartStoppingDto
     {
         public DateTime StartDateTime { get; set; }
         public DateTime EndDateTime { get; set; }
         public string StoppingReason { get; set; }
-
     }
 }

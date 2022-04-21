@@ -9,9 +9,9 @@ namespace ProductOperation.Core.Repositories
     public interface IRepository<T> where T : class
     {
         Task<T> GetByIdAsync(int id);
-        Task<IEnumerable<T>> GetAllAsync();
+        IQueryable<T> GetAll();
         Task AddAsync(T entity);
-        Task UpdateAsync(T entity);
-        Task RemoveAsync(T entity);
+        void Update(T entity);
+        void Remove(T entity);
     }
 }

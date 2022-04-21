@@ -28,22 +28,22 @@ namespace ProductOperation.Repository
             modelBuilder.Entity<StandartStopping>().HasData(new StandartStopping()
             {
                 Id = 1,
-                StartTime = new TimeOnly(10, 00),
-                EndTime = new TimeOnly(10, 15),
+                StartDateTime = new DateTime(2020, 5, 23, 10, 00, 0),
+                EndDateTime = new DateTime(2020, 5, 23, 10, 15, 0),
                 StoppingReason ="Çay Molası",
 
             }, new StandartStopping()
             {
                 Id = 2,
-                StartTime = new TimeOnly(12, 00),
-                EndTime = new TimeOnly(12, 30),
+                StartDateTime = new DateTime(2020, 5, 23, 12, 00, 0),
+                EndDateTime = new DateTime(2020, 5, 23, 12, 30, 0),
                 StoppingReason ="Yemek Molası",
 
             }, new StandartStopping()
             {
                 Id = 3,
-                StartTime = new TimeOnly(15, 00),
-                EndTime = new TimeOnly(15, 15),
+                StartDateTime = new DateTime(2020, 5, 23, 15, 00, 0),
+                EndDateTime = new DateTime(2020, 5, 23, 15, 15, 0),
                 StoppingReason ="Çay Molası",
             }
             );

@@ -15,8 +15,8 @@ namespace ProductOperation.Repository.Configurations
         {
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).UseIdentityColumn();
-            builder.Property(x => x.StartTime).IsRequired();
-            builder.Property(x => x.EndTime).IsRequired();
+            builder.Property(x => x.StartDateTime).IsRequired();
+            builder.Property(x => x.EndDateTime).IsRequired();
             builder.Property(x => x.StoppingReason);
 
             builder.ToTable("StandartStoppings");
