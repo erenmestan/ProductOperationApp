@@ -21,10 +21,10 @@
         {
             <tr>
                 <td>@item.No</td>
-                <td>@item.StartDateTime</td>
-                <td>@item.EndDateTime</td>
-                <td>@item.TotalTime</td>
-                <td>@item.Status</td>
+                <td>@item.StartDateTime.ToString("MM/dd/yyyy HH:mm")</td>
+                <td>@item.EndDateTime.ToString("MM/dd/yyyy HH:mm")</td>
+                <td>@item.TotalTime.ToString(@"hh\:mm")</td>
+                <td>@(item.Status?"Üretim":"Duruş")</td>
                 <td>@item.StoppingReason</td>
                 <td>
                     <a class="btn btn-warning" asp-controller="ProductionOperation" asp-action="Update" asp-route-id="@item.Id">Düzenle</a>

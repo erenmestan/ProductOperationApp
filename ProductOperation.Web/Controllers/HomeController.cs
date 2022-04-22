@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProductOperation.Core.DTOs;
+using ProductOperation.Core.Services;
 using ProductOperation.Web.Models;
 using System.Diagnostics;
 
@@ -6,22 +8,24 @@ namespace ProductOperation.Web.Controllers
 {
     public class HomeController : Controller
     {
-       
+        IProductionOperationService productionService;
+
+        public HomeController(IProductionOperationService productionService)
+        {
+            this.productionService=productionService;
+        }
+
         public IActionResult Index()
         {
-
             return View();
         }
-
-        public IActionResult Privacy()
+        [HttpPost]
+        public IActionResult Index(DateTime dateTime)
         {
-            return View();
+            ViewBag.Message = dateTime.ToString("dd/MM/yyyy");
+            List<ProductionOperationDTO> products = productionService.Reorganize(dateTime);
+            return View(products);
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+       
     }
 }

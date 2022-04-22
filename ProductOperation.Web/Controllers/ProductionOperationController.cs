@@ -41,21 +41,38 @@ namespace ProductOperation.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 ProductionOperation production = _mapper.Map<ProductionOperation>(operationDTO);
                 await _service.AddAsync(production);
-
                 return RedirectToAction(nameof(Index));
             }
             return View();
         }
-        public IActionResult Update()
+        public async Task<IActionResult> Update(int id)
         {
+            ProductionOperation productionOperation = await _service.GetByIdAsync(id);
+            ProductionOperationDTO productionOperationDTO = _mapper.Map<ProductionOperationDTO>(productionOperation);
+            return View(productionOperationDTO);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update(ProductionOperationDTO operationDTO)
+        {
+            if (ModelState.IsValid)
+            {
+
+                ProductionOperation productionOperation = _mapper.Map<ProductionOperation>(operationDTO);
+                await _service.UpdateAsync(productionOperation);
+                return RedirectToAction(nameof(Index));
+            }
             return View();
         }
-        public ActionResult Remove()
+
+        public async Task<IActionResult> Remove(int id)
         {
-            return View();
+            ProductionOperation productionOperation = await _service.GetByIdAsync(id);
+            await _service.RemoveAsync(productionOperation);
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }
