@@ -39,7 +39,7 @@ namespace ProductOperation.Service.Services
                     int productionSize = productionOperationDTOs.Count;
                     foreach (var standart in standarts)
                     {
-                        if (product.StartDateTime.TimeOfDay < standart.StartTime && product.EndDateTime.TimeOfDay > standart.StartTime)
+                        if (product.StartDateTime.TimeOfDay < standart.StartTime && product.EndDateTime.TimeOfDay > standart.StartTime) 
                         {
                             ProductionOperationDTO productionOperationDTO = new ProductionOperationDTO();
                             productionOperationDTO.No = product.No;
@@ -56,18 +56,23 @@ namespace ProductOperation.Service.Services
                             productionOperationDTO2.Status = false;
                             productionOperationDTO2.StoppingReason = standart.StoppingReason;
                             productionOperationDTO2.TotalTime = productionOperationDTO2.EndDateTime-productionOperationDTO2.StartDateTime;
-
-                            ProductionOperationDTO productionOperationDTO3 = new ProductionOperationDTO();
-                            productionOperationDTO3.No = product.No;
-                            productionOperationDTO3.StartDateTime = product.StartDateTime.Date + standart.EndTime;
-                            productionOperationDTO3.EndDateTime = product.EndDateTime;
-                            productionOperationDTO3.Status =product.Status;
-                            productionOperationDTO3.StoppingReason = product.StoppingReason;
-                            productionOperationDTO3.TotalTime = productionOperationDTO3.EndDateTime-productionOperationDTO3.StartDateTime;
-
                             productionOperationDTOs.Add(productionOperationDTO);
                             productionOperationDTOs.Add(productionOperationDTO2);
-                            productionOperationDTOs.Add(productionOperationDTO3);
+
+                            if (product.EndDateTime.TimeOfDay != standart.EndTime)
+                            {
+                                ProductionOperationDTO productionOperationDTO3 = new ProductionOperationDTO();
+                                productionOperationDTO3.No = product.No;
+                                productionOperationDTO3.StartDateTime = product.StartDateTime.Date + standart.EndTime;
+                                productionOperationDTO3.EndDateTime = product.EndDateTime;
+                                productionOperationDTO3.Status = product.Status;
+                                productionOperationDTO3.StoppingReason = product.StoppingReason;
+                                productionOperationDTO3.TotalTime = productionOperationDTO3.EndDateTime -
+                                                                    productionOperationDTO3.StartDateTime;
+                                productionOperationDTOs.Add(productionOperationDTO3);
+
+                            }
+
                         }
                         else if (product.StartDateTime.TimeOfDay == standart.StartTime && product.EndDateTime.TimeOfDay > standart.StartTime)
                         {

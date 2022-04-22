@@ -22,12 +22,24 @@ namespace ProductOperation.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<ProductionOperation> pos = _service.GetAll().ToList();
+            List<ProductionOperation> pos = _service.GetAll().Where(p => p.StartDateTime.Date == new DateTime(2020,05,23).Date).ToList();
             List<ProductionOperationDTO> productOperationDTOs = _mapper.Map<List<ProductionOperationDTO>>(pos);
             foreach (ProductionOperationDTO productOperationDTO in productOperationDTOs)
             {
                 TimeSpan dateTime = productOperationDTO.EndDateTime-(productOperationDTO.StartDateTime);
                 productOperationDTO.TotalTime = dateTime;
+            }
+            return View(productOperationDTOs);
+        }
+        [HttpPost]
+        public IActionResult Index(DateTime dateTime)
+        {
+            List<ProductionOperation> pos = _service.GetAll().Where(p=>p.StartDateTime.Date == dateTime.Date).ToList();
+            List<ProductionOperationDTO> productOperationDTOs = _mapper.Map<List<ProductionOperationDTO>>(pos);
+            foreach (ProductionOperationDTO productOperationDTO in productOperationDTOs)
+            {
+                TimeSpan tdaTime = productOperationDTO.EndDateTime-(productOperationDTO.StartDateTime);
+                productOperationDTO.TotalTime = tdaTime;
             }
             return View(productOperationDTOs);
         }
