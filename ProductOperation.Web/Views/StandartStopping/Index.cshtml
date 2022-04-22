@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "Index";
 }
-
 @model List<StandartStoppingDto>
 <h1>Standart Duruşlar</h1>
 <a class="btn btn-primary" asp-controller="StandartStopping" asp-action="Save">Yeni Ekle</a>
@@ -21,8 +20,8 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.StartDateTime</td>
-                <td>@item.EndDateTime</td>
+                <td>@item.StartTime.ToString(@"hh\:mm")</td>
+                <td>@item.EndTime.ToString(@"hh\:mm")</td>
                 <td>@item.StoppingReason</td>
                 <td>
                     <a class="btn btn-warning" asp-controller="StandartStopping" asp-action="Update" asp-route-id="@item.Id">Düzenle</a>
