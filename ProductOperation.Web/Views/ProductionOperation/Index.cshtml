@@ -1,0 +1,37 @@
+﻿@using ProductOperation.Core.DTOs
+@{
+    ViewData["Title"] = "Index";
+}
+@model List<ProductionOperationDTO>
+<a class="btn btn-primary" asp-controller="ProductionOperation" asp-action="Save">Yeni Ekle</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>No</td>
+            <td>Başlangıç</td>
+            <td>Bitiş</td>
+            <td>Toplam Süre(Saat)</td>
+            <td>Statü</td>
+            <td>Duruş Nedeni</td>
+            <td>Düzenle</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.No</td>
+                <td>@item.StartDateTime</td>
+                <td>@item.EndDateTime</td>
+                <td>@item.TotalTime</td>
+                <td>@item.Status</td>
+                <td>@item.StoppingReason</td>
+                <td>
+                    <a class="btn btn-warning" asp-controller="ProductionOperation" asp-action="Update" asp-route-id="@item.Id">Düzenle</a>
+                    <a class="btn btn-danger" asp-controller="ProductionOperation" asp-action="Remove" asp-route-id="@item.Id">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

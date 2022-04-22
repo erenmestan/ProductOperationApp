@@ -1,0 +1,54 @@
+﻿@using ProductOperation.Core.DTOs
+
+@{
+    ViewData["Title"] = "Save";
+}
+@model ProductionOperationDTO
+
+<h1>Üretim Operasyonu Ekle</h1>
+<div class="row">
+
+    <div class=col-md-6>
+
+        <form asp-action="Save" method="post" asp-controller="ProductionOperation">
+
+            <div class="form-group">
+                <label asp-for="No">No</label>
+                <input asp-for="No" class="form-control" />
+                <span asp-validation-for="No" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartDateTime">Başlangıç</label>
+                <input asp-for="StartDateTime" class="form-control" />
+                <span asp-validation-for="StartDateTime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EndDateTime">Bitiş</label>
+                <input asp-for="EndDateTime" class="form-control" />
+                <span asp-validation-for="EndDateTime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Status">Statü</label>
+                <select class="form-control" asp-for="Status" id="Status">
+                    <option value="False">Duruş</option>
+                    <option value="True">Üretim</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="StoppingReason">Duruş Nedeni</label>
+                <input asp-for="StoppingReason" class="form-control" />
+                <span asp-validation-for="StoppingReason" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn-primary" />
+            </div>
+        </form>
+
+
+
+    </div>
+
+
+</div>

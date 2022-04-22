@@ -1,4 +1,5 @@
-﻿using ProductOperation.Core.Repositories;
+﻿using ProductOperation.Core.Models;
+using ProductOperation.Core.Repositories;
 using ProductOperation.Core.Services;
 using ProductOperation.Core.UnitOfWorks;
 

@@ -9,10 +9,10 @@ namespace ProductOperation.Service.Repositories
         protected readonly AppDbContext _context;
         private readonly DbSet<T> _dbSet;
 
-        public Repository(AppDbContext context, DbSet<T> dbSet)
+        public Repository(AppDbContext context)
         {
             _context=context;
-            _dbSet=dbSet;
+            _dbSet=_context.Set<T>();
         }
 
         public async Task AddAsync(T entity)

@@ -11,12 +11,13 @@ namespace ProductOperation.Repository
 {
     public class AppDbContext : DbContext
     {
+        public DbSet<ProductionOperation> ProductionOperations { get; set; }
+        public DbSet<StandartStopping> StandartStoppings { get; set; }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
 
         }
-        public DbSet<ProductionOperation> ProductionOperations { get; set; }
-        public DbSet<StandartStopping> StandartStoppings { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

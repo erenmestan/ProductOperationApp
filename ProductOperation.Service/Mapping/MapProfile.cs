@@ -9,6 +9,7 @@ namespace ProductOperation.Service.Mapping
         public MapProfile()
         {
             CreateMap<ProductionOperation, ProductionOperationDTO>().ReverseMap();
+            CreateMap<StandartStopping, StandartStoppingDto>().ReverseMap();
         }
     }
 }
