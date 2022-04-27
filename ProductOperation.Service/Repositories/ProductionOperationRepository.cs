@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ProductOperation.Core.Models;
+﻿using ProductOperation.Core.Models;
 using ProductOperation.Core.Repositories;
 using ProductOperation.Repository;
 
@@ -10,6 +9,6 @@ namespace ProductOperation.Service.Repositories
         public ProductionOperationRepository(AppDbContext context) : base(context)
         {
         }
-   
+
     }
 }

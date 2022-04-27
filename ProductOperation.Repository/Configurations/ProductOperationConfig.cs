@@ -6,7 +6,7 @@ namespace ProductOperation.Repository.Configurations
 {
     public class ProductOperationConfig : IEntityTypeConfiguration<ProductionOperation>
     {
-        
+
         public void Configure(EntityTypeBuilder<ProductionOperation> builder)
         {
             builder.HasKey(x => x.Id);

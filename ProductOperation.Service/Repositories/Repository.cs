@@ -37,7 +37,7 @@ namespace ProductOperation.Service.Repositories
 
         public void Update(T entity)
         {
-           _dbSet.Update(entity);
+            _dbSet.Update(entity);
         }
     }
 }

@@ -4,7 +4,6 @@ using ProductOperation.Core.Models;
 using ProductOperation.Core.Repositories;
 using ProductOperation.Core.Services;
 using ProductOperation.Core.UnitOfWorks;
-using ProductOperation.Service.Repositories;
 
 namespace ProductOperation.Service.Services
 {
@@ -13,7 +12,7 @@ namespace ProductOperation.Service.Services
         private readonly IStandartStoppingRepository _standardRepo;
         private readonly IMapper _mapper;
 
-        public ProductionOperationService(IRepository<ProductionOperation> repository, IUnitOfWork unitOfWork, IStandartStoppingRepository standardRepo,IMapper mapper) : base(repository, unitOfWork)
+        public ProductionOperationService(IRepository<ProductionOperation> repository, IUnitOfWork unitOfWork, IStandartStoppingRepository standardRepo, IMapper mapper) : base(repository, unitOfWork)
         {
             _standardRepo = standardRepo;
             _mapper = mapper;
@@ -23,9 +22,9 @@ namespace ProductOperation.Service.Services
         {
             List<ProductionOperationDTO> productionOperationDTOs = new List<ProductionOperationDTO>();
 
-            List<ProductionOperationDTO> products = _mapper.Map<List<ProductionOperationDTO>>(_repository.GetAll().Where(p=>p.StartDateTime.Date == dateTime.Date).OrderBy(products => products.StartDateTime));
+            List<ProductionOperationDTO> products = _mapper.Map<List<ProductionOperationDTO>>(_repository.GetAll().Where(p => p.StartDateTime.Date == dateTime.Date).OrderBy(products => products.StartDateTime));
             List<StandartStoppingDto> standarts = _mapper.Map<List<StandartStoppingDto>>(_standardRepo.GetAll().OrderBy(standarts => standarts.StartDateTime));
-           
+
 
             foreach (var product in products)
             {
@@ -35,11 +34,12 @@ namespace ProductOperation.Service.Services
 
                     productionOperationDTOs.Add(product);
                 }
-                else {
+                else
+                {
                     int productionSize = productionOperationDTOs.Count;
                     foreach (var standart in standarts)
                     {
-                        if (product.StartDateTime.TimeOfDay < standart.StartTime && product.EndDateTime.TimeOfDay > standart.StartTime) 
+                        if (product.StartDateTime.TimeOfDay < standart.StartTime && product.EndDateTime.TimeOfDay > standart.StartTime)
                         {
                             ProductionOperationDTO productionOperationDTO = new ProductionOperationDTO();
                             productionOperationDTO.No = product.No;
@@ -96,7 +96,7 @@ namespace ProductOperation.Service.Services
                             productionOperationDTOs.Add(productionOperationDTO2);
                         }
                     }
-                    if(productionSize == productionOperationDTOs.Count)
+                    if (productionSize == productionOperationDTOs.Count)
                     {
                         productionOperationDTOs.Add(product);
                     }

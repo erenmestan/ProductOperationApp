@@ -2,7 +2,7 @@
 
 namespace ProductOperation.Core.Repositories
 {
-    public interface IProductionOperationRepository :IRepository<ProductionOperation>
+    public interface IProductionOperationRepository : IRepository<ProductionOperation>
     {
     }
 }

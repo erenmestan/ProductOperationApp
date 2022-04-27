@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using ProductOperation.Core.DTOs;
 using ProductOperation.Core.Models;
 using ProductOperation.Core.Services;
-using ProductOperation.Service.Services;
 
 namespace ProductOperation.Web.Controllers
 {
@@ -22,7 +20,7 @@ namespace ProductOperation.Web.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<ProductionOperation> pos = _service.GetAll().Where(p => p.StartDateTime.Date == new DateTime(2020,05,23).Date).ToList();
+            List<ProductionOperation> pos = _service.GetAll().Where(p => p.StartDateTime.Date == new DateTime(2020, 05, 23).Date).ToList();
             List<ProductionOperationDTO> productOperationDTOs = _mapper.Map<List<ProductionOperationDTO>>(pos);
             foreach (ProductionOperationDTO productOperationDTO in productOperationDTOs)
             {
@@ -34,7 +32,7 @@ namespace ProductOperation.Web.Controllers
         [HttpPost]
         public IActionResult Index(DateTime dateTime)
         {
-            List<ProductionOperation> pos = _service.GetAll().Where(p=>p.StartDateTime.Date == dateTime.Date).ToList();
+            List<ProductionOperation> pos = _service.GetAll().Where(p => p.StartDateTime.Date == dateTime.Date).ToList();
             List<ProductionOperationDTO> productOperationDTOs = _mapper.Map<List<ProductionOperationDTO>>(pos);
             foreach (ProductionOperationDTO productOperationDTO in productOperationDTOs)
             {

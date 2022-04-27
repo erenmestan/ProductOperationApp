@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProductOperation.Core.DTOs;
 using ProductOperation.Core.Services;
-using ProductOperation.Web.Models;
-using System.Diagnostics;
 
 namespace ProductOperation.Web.Controllers
 {
@@ -26,6 +24,6 @@ namespace ProductOperation.Web.Controllers
             List<ProductionOperationDTO> products = productionService.Reorganize(dateTime);
             return View(products);
         }
-       
+
     }
 }

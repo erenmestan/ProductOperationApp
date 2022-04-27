@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProductOperation.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProductOperation.Repository
 {
